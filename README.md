@@ -1,2 +1,1 @@
-#Demo:
-#     https://spiraleyeld.github.io/game/
+#Demo: https://spiraleyeld.github.io/game/
