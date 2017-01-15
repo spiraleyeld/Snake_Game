@@ -69,7 +69,7 @@
 							for(var i =0;i<r.length; i++){
 								context.drawImage(ghost,0,0,29,26,r[i].x,r[i].y,29,26);
 							};
-							// 第三點五層 小精靈（蛇身）
+							
 							
 							// 第四層 愛心
 							context.drawImage(heart,0,0,25,25,x1,y1,25,25);
