@@ -7,12 +7,13 @@
 				var ghost = new Image() ;
 				var heart = new Image();
 				var guide = new Image();
-				
+				var gg	= new Image();
 
 
 				ghost.src = "images/ghost.png" ;
 				heart.src = "images/heart.png";	  
 				guide.src = "images/awsd.png";
+				gg.src = "images/gg.png";
 				
 
 				//此段是要控制小精靈距離愛心多遠才算吃掉
@@ -76,6 +77,8 @@
 									r.pop();
 								}
 
+								
+
 							};
 							
 							
@@ -88,35 +91,53 @@
 							
 							
 						
-							if(r[0].y>=0 || r[0].y<=176 && r[0].x>=0 || r[0].x<=372 ){
+							if(r[0].y>0 || r[0].y<176 && r[0].x>-25 || r[0].x<380 ){
 							r[0].y+=z;
 							r[0].x+=q;
+							// 判斷蛇身是否有重疊
+							for(var i=1;i<r.length;i++){
+								if(r[0].x==r[i].x && r[0].y == r[i].y){
+									count=0;
+									count+=1;
+									if(count>0){
+										
+										context.drawImage(gg,0,0,150,60,125,75,150,60);
+									}
+								}
+							}
 							r.unshift({x:r[0].x,y:r[0].y});
 							
 							heartChange();
 							}
 							// 匡住小精靈的移動範圍
-							if(r[0].y<=0){
+							if(r[0].y<0){
+								
+								r[0].y=176;
+								
+
+							}
+							// 匡住小精靈的移動範圍
+							if(r[0].y>176){
+								
 								r[0].y=0;
 								
 							}
 							// 匡住小精靈的移動範圍
-							if(r[0].y>=176){
-								r[0].y=176;
+							if(r[0].x<0){
+								r[0].x=380;
+							
 								
 							}
 							// 匡住小精靈的移動範圍
-							if(r[0].x<=0){
-								r[0].x=0;
+							if(r[0].x>380){
+								r[0].x=-25;
+							
+								
 								
 							}
-							// 匡住小精靈的移動範圍
-							if(r[0].x>=372){
-								r[0].x=372;
-								
-							}
-									
-								
+							
+
+							
 							
 									
 							break;
@@ -145,8 +166,6 @@
 					// 這邊有個小技巧，如果x座標已經設定移動距離z，y座標的移動距離q要設定爲0，
 					// 目的是要讓小精靈行進時，每次按鍵都維持在單一方向。
 					if(code1==87){
-						
-						
 						z=-k;
 						q=0;
 						
@@ -167,31 +186,31 @@
 						z=0;
 						
 					}
-					if(code1==32){
-						q=0;
-						z=0;	
-					}
-					if(code1==null){
-						q=0;
-						z=0;
-						
-					}
-				}
-
 				
+				}
+				// 判斷愛心與蛇身不重疊的位置
+				var count =0;
 				// 主要是計算小精靈與愛心的距離（絶對値）當兩者非常接近時，就改變愛心的位置。
 				function heartChange(){
 					
 					if(Math.abs(r[0].x-x1)<t1 && Math.abs(r[0].y-y1)<t2){
 						
 						while(true){
+							count =0;
 							x1=canvas.width*Math.random();
 							y1=canvas.height*Math.random();
-								if(y1>0 && y1<176 && x1>0 && x1<372){
-									break;
+							for(var i=0;i<r.length;i++){
+								if(Math.abs(r[i].x-x1)<15 && Math.abs(r[i].y-y1)<15){
+									count+=1;
 								}
-								// 只要讓愛心位移（被吃）一次，分數就加一
+							}
+							if(y1>0 && y1<176 && x1>0 && x1<372 && count==0){
+								break;
+							}
+								
 						}
+						// 只要讓愛心位移（被吃）一次，分數就加一
+						
 						score+=1;
 						r.unshift({x:r[0].x,y:r[0].y});
 					}
