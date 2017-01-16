@@ -5,13 +5,12 @@
 
 ### Snake Game
 ![Markdown](images/samplepic.png)
+
 [Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
 
 
 ```markdown
 Syntax highlighted code block
-
-
 
 # Array is the main concept of this game.
 
