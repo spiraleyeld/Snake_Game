@@ -10,7 +10,7 @@
 ```markdown
 Syntax highlighted code block
 
-# Array is the mainpoints
+# Array is the main concept of this game.
 
 ## Key Right
     <1> 1.(x:10,y:10) 2.(x:9,y:10)
