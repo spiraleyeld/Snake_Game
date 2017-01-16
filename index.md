@@ -10,7 +10,7 @@
 ```markdown
 Syntax highlighted code block
 
-[Image](https://github.com/spiraleyeld/Snake_Game/tree/master/images/samplepic.png)
+[Image](src="https://github.com/spiraleyeld/Snake_Game/tree/master/images/samplepic.png")
 
 # Array is the main concept of this game.
 
