@@ -30,16 +30,18 @@
 				
 				// 小精靈的座標
 				r = [{x:190,y:80}];
+				d = r.length;
 				// 愛心的座標
 				x1 = 150, y1 =50;
 				// 上下左右提示的座標
 				x2 = 320, y2 =8;
 
+		
+				var cor= {x:0,y:0};
 				
-				
-				z=0; //x座標移動的距離初値
-				q=0; //y座標移動的距離初値
-				k=10; // x,y 座標移動的每次移動的距離
+				z=0; //y座標移動的距離初値
+				q=0; //x座標移動的距離初値
+				k=25; // x,y 座標移動的每次移動的距離
 				
 
 				// 遊戱的主執行程式
@@ -65,9 +67,15 @@
 							context.fillText("S c o r e :  "+score,8,18);	
 							// 第二層 指標
 							context.drawImage(guide,0,0,70,45,x2,y2,70,45);
-							// 第三層 小精靈(蛇頭)
+							// 第三層 小精靈(畫出整條蛇)
 							for(var i =0;i<r.length; i++){
 								context.drawImage(ghost,0,0,29,26,r[i].x,r[i].y,29,26);
+								if(r.length==1){
+									iThink='awei_is_cool';
+								}else if(i==r.length-1){
+									r.pop();
+								}
+
 							};
 							
 							
@@ -77,32 +85,46 @@
 							 
 							// 指定小精靈在正常情況下的位移，以及隨時搭配"心動時刻"
 							
+							
+							
 						
 							if(r[0].y>=0 || r[0].y<=176 && r[0].x>=0 || r[0].x<=372 ){
-								r[0].y+=z;
-								r[0].x+=q;
-								heartChange();
+							r[0].y+=z;
+							r[0].x+=q;
+							r.unshift({x:r[0].x,y:r[0].y});
+							
+							heartChange();
 							}
 							// 匡住小精靈的移動範圍
-							if(r[0].y<0){
+							if(r[0].y<=0){
 								r[0].y=0;
+								alert('gg');
 							}
 							// 匡住小精靈的移動範圍
-							if(r[0].y>176){
+							if(r[0].y>=176){
 								r[0].y=176;
+								alert('gg');
 							}
 							// 匡住小精靈的移動範圍
-							if(r[0].x<0){
-								r[0].x=0;	
+							if(r[0].x<=0){
+								r[0].x=0;
+								alert('gg');
 							}
 							// 匡住小精靈的移動範圍
-							if(r[0].x>372){
-								r[0].x=372;	
+							if(r[0].x>=372){
+								r[0].x=372;
+								alert('gg');
 							}
+									
 								
+							
+									
 							break;
 					}
 				}
+
+			
+
 
 
 				var code1;
@@ -123,24 +145,36 @@
 					// 這邊有個小技巧，如果x座標已經設定移動距離z，y座標的移動距離q要設定爲0，
 					// 目的是要讓小精靈行進時，每次按鍵都維持在單一方向。
 					if(code1==87){
+						
+						
 						z=-k;
 						q=0;
+						
+						
 					}
 					if(code1==68){
 						q=k;
 						z=0;
+						
 					}
 					if(code1==83){
 						z=k;
 						q=0;
+						
 					}
 					if(code1==65){
 						q=-k;
 						z=0;
+						
 					}
 					if(code1==32){
 						q=0;
 						z=0;	
+					}
+					if(code1==null){
+						q=0;
+						z=0;
+						
 					}
 				}
 
@@ -159,13 +193,15 @@
 								// 只要讓愛心位移（被吃）一次，分數就加一
 						}
 						score+=1;
+						r.unshift({x:r[0].x,y:r[0].y});
 					}
 				}
 				
 		
 				
 				// html載入時，重複執行main
-				window.addEventListener('load',setInterval(main, 60),false);
+				window.addEventListener('load',setInterval(main, 120),false);
 				window.addEventListener('load',heartChange,false);
+			
 				window.addEventListener('keyup',fowardChange,false);
 				
