@@ -20,7 +20,7 @@
 				var t1 =15;
 				var t2 =15;	  
 				
-				//給予分數初値，以及顯示字體的相關參數
+				//給予分數初値，以及顯示字體的相關參數waw
 				var score=0;
 				context.font="5px 微軟正黑體";
 				context.fillStyle="white";
@@ -94,7 +94,7 @@
 							if(r[0].y>0 || r[0].y<176 && r[0].x>-25 || r[0].x<380 ){
 							r[0].y+=z;
 							r[0].x+=q;
-							// 判斷蛇身是否有重疊
+							// 判斷蛇身是否有重疊，，如果成立count+1，因為count=1，所以遊戲會停止執行。
 							for(var i=1;i<r.length;i++){
 								if(r[0].x==r[i].x && r[0].y == r[i].y){
 									count=0;
@@ -186,25 +186,23 @@
 						z=0;
 						
 					}
-				
 				}
-				// 判斷愛心與蛇身不重疊的位置
-				var count =0;
+				
 				// 主要是計算小精靈與愛心的距離（絶對値）當兩者非常接近時，就改變愛心的位置。
 				function heartChange(){
 					
 					if(Math.abs(r[0].x-x1)<t1 && Math.abs(r[0].y-y1)<t2){
 						
 						while(true){
-							count =0;
+							var countError =0;
 							x1=canvas.width*Math.random();
 							y1=canvas.height*Math.random();
 							for(var i=0;i<r.length;i++){
 								if(Math.abs(r[i].x-x1)<15 && Math.abs(r[i].y-y1)<15){
-									count+=1;
+									countError+=1;
 								}
 							}
-							if(y1>0 && y1<176 && x1>0 && x1<372 && count==0){
+							if(y1>0 && y1<176 && x1>0 && x1<372 && countError==0){
 								break;
 							}
 								
@@ -221,6 +219,6 @@
 				// html載入時，重複執行main
 				window.addEventListener('load',setInterval(main, 120),false);
 				window.addEventListener('load',heartChange,false);
-			
+				
 				window.addEventListener('keyup',fowardChange,false);
 				
