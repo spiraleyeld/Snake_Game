@@ -144,9 +144,10 @@
 					}
 				}
 
-			
-
-
+				var block1=true;
+				var block2=true;
+				var block3=true;
+				var block4=true;
 
 				var code1;
 				function fowardChange(){
@@ -165,25 +166,36 @@
 					}
 					// 這邊有個小技巧，如果x座標已經設定移動距離z，y座標的移動距離q要設定爲0，
 					// 目的是要讓小精靈行進時，每次按鍵都維持在單一方向。
-					if(code1==87){
+					if(code1==87 && block1==true){
 						z=-k;
 						q=0;
-						
+						block2=true;
+						block3=false;
+						block4=true;
 						
 					}
-					if(code1==68){
+					if(code1==68 && block2==true){
 						q=k;
 						z=0;
+						block1=true;
+						block3=true;
+						block4=false;
 						
 					}
-					if(code1==83){
+					if(code1==83 && block3==true){
 						z=k;
 						q=0;
+						block1=false;
+						block2=true;
+						block4=true;
 						
 					}
-					if(code1==65){
+					if(code1==65 && block4==true){
 						q=-k;
 						z=0;
+						block1=true;
+						block2=false;
+						block3=true;
 						
 					}
 				}
