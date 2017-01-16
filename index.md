@@ -10,6 +10,8 @@
 ```markdown
 Syntax highlighted code block
 
+[image](https://github.com/spiraleyeld/Snake_Game/tree/master/images/samplepic.png)
+
 # Array is the main concept of this game.
 
 ## Key Right
@@ -18,6 +20,7 @@ Syntax highlighted code block
     <2> 1.(x:10,y:11) 2.(x:10,y:10)
 ## Key Right
     <3> 1.(x:11,y:11) 2.(x:10,y:11)
+    
 
 ```
 
