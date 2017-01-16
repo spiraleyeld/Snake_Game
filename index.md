@@ -5,7 +5,7 @@
 
 ### Snake Game
 
-[Demo](https://spiraleyeld.github.io/Snake_Game/game.html)
+[Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
 
 ```markdown
 Syntax highlighted code block
