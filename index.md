@@ -10,8 +10,6 @@
 
 
 ```markdown
-Syntax highlighted code block
-
 # Array is the main concept of this game.
 
 ## Key Right
