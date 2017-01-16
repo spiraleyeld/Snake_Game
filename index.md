@@ -1,39 +1,25 @@
-## Welcome to GitHub of AWei'Pages
+## Welcome to AWei's GitHub
 
-You can use the [editor on GitHub](https://github.com/spiraleyeld/try/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+
+
+### Snake Game
 
 [Game Demo](https://spiraleyeld.github.io/game/game.html)
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
 Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+# Array is the mainpoints
 
-- Bulleted
-- List
+## Key Right
+  <1> 1.(x:10,y:10) 2.(x:9,y:10)
+## Key Down
+  <2> 1.(x:10,y:11) 2.(x:10,y:10)
+## Key Right
+  <3> 1.(x:11,y:11) 2.(x:10,y:11)
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/spiraleyeld/try/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
