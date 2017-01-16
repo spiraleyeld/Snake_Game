@@ -7,10 +7,10 @@
 
 [Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
 
-![Markdown](images/samplepic.png)
+
 ```markdown
 Syntax highlighted code block
-
+![Markdown](images/samplepic.png)
 
 
 # Array is the main concept of this game.
