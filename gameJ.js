@@ -92,22 +92,22 @@
 							
 						
 							if(r[0].y>0 || r[0].y<176 && r[0].x>-25 || r[0].x<380 ){
-							r[0].y+=z;
-							r[0].x+=q;
-							// 判斷蛇身是否有重疊，，如果成立count+1，因為count=1，所以遊戲會停止執行。
-							for(var i=1;i<r.length;i++){
-								if(r[0].x==r[i].x && r[0].y == r[i].y){
-									count=0;
-									count+=1;
-									if(count>0){
-										
-										context.drawImage(gg,0,0,150,60,125,75,150,60);
+								r[0].y+=z;
+								r[0].x+=q;
+								// 判斷蛇身是否有重疊，，如果成立count+1，因為count=1，所以遊戲會停止執行。
+								for(var i=1;i<r.length;i++){
+									if(r[0].x==r[i].x && r[0].y == r[i].y){
+										count=0;
+										count+=1;
+										if(count>0){
+											
+											context.drawImage(gg,0,0,150,60,125,75,150,60);
+										}
 									}
 								}
-							}
-							r.unshift({x:r[0].x,y:r[0].y});
-							
-							heartChange();
+								r.unshift({x:r[0].x,y:r[0].y});
+								
+								heartChange();
 							}
 							// 匡住小精靈的移動範圍
 							if(r[0].y<0){
