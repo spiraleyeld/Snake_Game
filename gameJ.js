@@ -210,7 +210,7 @@
 							x1=canvas.width*Math.random();
 							y1=canvas.height*Math.random();
 							for(var i=0;i<r.length;i++){
-								if(Math.abs(r[i].x-x1)<16 && Math.abs(r[i].y-y1)<16){
+								if(Math.abs(r[i].x-x1)<12 && Math.abs(r[i].y-y1)<12){
 									countError+=1;
 								}
 							}
