@@ -214,7 +214,7 @@
 									countError+=1;
 								}
 							}
-							if(y1>10 && y1<170 && x1>10 && x1<370 && countError==0){
+							if(y1>10 && y1<170 && x1>10 && x1<350 && countError==0){
 								break;
 							}
 								
