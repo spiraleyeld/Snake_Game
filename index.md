@@ -8,10 +8,11 @@
 
 [Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
 
+![Markdown](images/cor.png)
 
 ```markdown
 # Keypoint: Array
-![Markdown](images/cor.png)
+
 ## direction_Right
     <1> [ {x:10,y:10} , {x:9,y:10} ]
     
