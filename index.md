@@ -3,10 +3,15 @@
 
 
 
+
+
 ### Snake Game
 ![Markdown1](images/samplepic.png)
 
 [Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
+
+
+
 
 ### Change the direction
 ![Markdown2](images/cor.png)
