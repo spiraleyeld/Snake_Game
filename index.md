@@ -8,12 +8,13 @@
 
 [Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
 
-### 
+### 蛇移動的方式 圖例依序為 右(畫面更新第一次)→下(第二次)→右(第三次)，每次改變方向，
+### 陣列頭加一個座標，陣列尾巴抽掉一個座標，能造成蛇移動的效果
 ![Markdown2](images/cor.png)
 
 ```markdown
 
-  function heartChange(){
+function heartChange(){
 					
 	if(Math.abs(r[0].x-x1)<t1 && Math.abs(r[0].y-y1)<t2){
 						
@@ -33,7 +34,7 @@
 								
 		}
                         
-		// If the heart changed the positon one time, then score +1 and the list +1. 
+		// 愛心 更改位置一次，則分數加一，蛇身陣列加一(由陣列0的位置加入)		
 		score+=1;
 		r.unshift({x:r[0].x,y:r[0].y});
 	}
