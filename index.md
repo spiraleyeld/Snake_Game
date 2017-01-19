@@ -5,15 +5,15 @@
 
 
 
-### Snake Game
+### Demo:Snake Game
 ![Markdown1](images/samplepic.png)
 
-[Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
+[Link](https://spiraleyeld.github.io/Snake_Game/demo.html)
 
 
 
 
-### Change the direction
+### Tip1-Change the direction
 ![Markdown2](images/cor.png)
 
 1.蛇移動的方式 圖例依序為 右(畫面更新第一次)→下(第二次)→右(第三次)
