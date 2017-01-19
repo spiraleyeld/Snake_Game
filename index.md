@@ -4,11 +4,11 @@
 
 
 ### Snake Game
-![Markdown](images/samplepic.png)
+![Markdown1](images/samplepic.png)
 
 [Demo](https://spiraleyeld.github.io/Snake_Game/demo.html)
 
-![Markdown](images/cor.png)
+![Markdown2](images/cor.png)
 
 ```markdown
 # Keypoint: Array
