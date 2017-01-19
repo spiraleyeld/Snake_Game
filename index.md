@@ -13,7 +13,7 @@
 
 
 
-### Tip-Change direction
+### Tip:Change direction
 ![Markdown2](images/cor.png)
 
 1.Snake's direction: right(screen update 1) →down(screen update 2) →right(screen update 3)
