@@ -22,7 +22,7 @@
 				
 				//給予分數初値，以及顯示字體的相關參數waw
 				var score=0;
-				context.font="5px 微軟正黑體";
+				context.font="15px Courier New";
 				context.fillStyle="white";
 				
 
@@ -65,7 +65,7 @@
 							// clear picture
 							context.clearRect(0,0,400,200);
 							// 第一層 成績
-							context.fillText("S c o r e :  "+score,8,18);	
+							context.fillText("Score : "+score,8,18);	
 							// 第二層 指標
 							context.drawImage(guide,0,0,70,45,x2,y2,70,45);
 							// 第三層 小精靈(畫出整條蛇)
