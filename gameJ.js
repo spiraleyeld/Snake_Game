@@ -18,8 +18,7 @@ var t1 =15; var t2 =15;
 //給予分數初値，以及顯示字體的相關參數waw
 var score=0;
 context.font="15px Courier New";
-context.fillStyle="white";
-				
+context.fillStyle="white";				
 
 // 給予執行主程式的初値
 var count = 0;
@@ -31,7 +30,6 @@ d = r.length;
 x1 = 150, y1 =50;
 // 上下左右提示的座標
 x2 = 320, y2 =8;
-
 		
 var cor= {x:0,y:0};
 				
@@ -44,8 +42,6 @@ k=29; // x,y 座標移動的每次移動的距離
 function main(){
 	draw();
 }
-
-
 
 function draw() {	  					   
 	switch(count) 
