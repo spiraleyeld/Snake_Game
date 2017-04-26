@@ -23,12 +23,7 @@ tipX = 320, tipY =8; // 上下左右提示的座標
 moveY=0; //y座標移動的距離初値
 moveX=0; //x座標移動的距離初値
 movDis=29; // x,y 座標移動的每次移動的距離
-var limitX =15; var limitY =15; //此段是要控制小精靈距離愛心多遠才算吃掉		
-
-// 遊戱的主執行程式
-function main(){
-	draw();
-}
+var limitX =15; var limitY =15; //此段是要控制小精靈距離愛心多遠才算吃掉
 
 function draw() {	  					   
 	switch(count) 
@@ -158,7 +153,7 @@ function heartChange(){
 	}
 }				
 // html載入時，重複執行main
-window.addEventListener('load',setInterval(main, 120),false);
+window.addEventListener('load',setInterval(draw, 120),false);
 window.addEventListener('load',heartChange,false);
 window.addEventListener('keydown',fowardChange,false);
 				
