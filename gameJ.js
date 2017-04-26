@@ -160,5 +160,5 @@ function heartChange(){
 // html載入時，重複執行main
 window.addEventListener('load',setInterval(main, 120),false);
 window.addEventListener('load',heartChange,false);
-window.addEventListener('keyup',fowardChange,false);
+window.addEventListener('keydown',fowardChange,false);
 				
