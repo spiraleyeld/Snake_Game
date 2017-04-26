@@ -50,8 +50,8 @@ function draw() {
 				snakeCor.pop();
 			}
 		};
-		// 第四層 愛心
-		context.drawImage(heart,0,0,25,25,heartCorX,heartCorY,25,25);
+		
+		context.drawImage(heart,0,0,25,25,heartCorX,heartCorY,25,25); // 第四層 愛心
 		// 指定小精靈在正常情況下的位移，以及隨時搭配"心動時刻"										
 		if(snakeCor[0].y>0 || snakeCor[0].y<176 && snakeCor[0].x>0 || snakeCor[0].x<378 ){
 			snakeCor[0].y+=moveY;
