@@ -10,7 +10,7 @@ var guide = new Image(); var gg	= new Image();
 ghost.src = "images/ghost.png" ; heart.src = "images/heart.png";	  
 guide.src = "images/awsd.png"; gg.src = "images/gg.png";
 				
-var score=0; //給予分數初値，以及顯示字體的相關參數waw
+var score = 0; //給予分數初値，以及顯示字體的相關參數waw
 var count = 0; // 給予執行主程式的初値
 
 context.font="15px Courier New";
