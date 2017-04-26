@@ -73,15 +73,12 @@ function draw() {
 		if(snakeCor[0].y<=0){						
 			snakeCor[0].y=175;						
 		}
-		// 匡住小精靈的移動範圍
 		if(snakeCor[0].y>=176){								
 			snakeCor[0].y=0;					
 		}
-		// 匡住小精靈的移動範圍
 		if(snakeCor[0].x<=0){
 			snakeCor[0].x=376;									
 		}
-		// 匡住小精靈的移動範圍
 		if(snakeCor[0].x>=377){
 			snakeCor[0].x=-25;										
 		}								
