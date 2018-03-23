@@ -153,7 +153,7 @@ function heartChange(){
 	}
 }				
 // html載入時，重複執行main
-window.addEventListener('load',setInterval(draw, 120),false);
-window.addEventListener('load',heartChange,false);
-window.addEventListener('keydown',fowardChange,false);
+window.addEventListener('load', function(){setInterval(draw, 120)},false);
+window.addEventListener('load', heartChange, false);
+window.addEventListener('keydown', fowardChange, false);
 				
