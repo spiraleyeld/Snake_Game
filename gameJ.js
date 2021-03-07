@@ -60,8 +60,6 @@
 				checkWall(snakeCor);	
 				break;
 		}
-					
-
 	}
 
 	function checkWall(snakeCor)
