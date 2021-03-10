@@ -2,9 +2,9 @@
 	//定義畫布	
 	var canvas = document.getElementById('canvas');
 	var context = canvas.getContext('2d');
- 	context.font="13px fantasy";
+	context.font="13px fantasy";
 	context.fillStyle="white";	
-	
+
 	//載入圖片
 	var ghost = new Image() ; var heart = new Image();
 	var guide = new Image(); var gg	= new Image();
@@ -18,7 +18,7 @@
 
 	ghost.src = "images/ghost.png" ; heart.src = "images/heart.png";	  
 	guide.src = "images/awsd.png"; gg.src = "images/gg.png";
-    ghostHead.src = "images/ghostHead.png";
+	ghostHead.src = "images/ghostHead.png";
 
 	headUpRight.src = "images/headUpLeft.png";
 	headUpLeft.src = "images/headUpLeft.png";
@@ -26,7 +26,8 @@
 	headRight.src = "images/headRight.png";
 	headDownLeft.src = "images/headDownLeft.png";
 	headDownRight.src = "images/headDownRight.png";
-    //設定初值
+ 
+        //設定初值
 	var score = 0; //給予分數初値，以及顯示字體的相關參數waw
 	var count = 0; // 給予執行主程式的初値	
 	var snakeCor = [{x:190,y:80}]; // 小精靈的座標
@@ -39,12 +40,9 @@
  	var blockUpper=true; var blockRight=true;
 	var blockDown=true;	var blockLeft=true;
 	var keyPress;
- 	var startSeconds = new Date().getTime() / 1000;
-    var gameSeconds = 0;
-	var dateTime = Date.now();
-    var timestamp = Math.floor(dateTime / 1000);
-    var timestampNew = 0;
-
+	var timestampOld = 0
+	var timestampNew = 0
+	
 	function draw()
 	{	
 		// 說明：
@@ -92,9 +90,8 @@
 				}
 				checkWall(snakeCor);	
 				break;
-		}		
-	}
- 
+		}	
+	} 
 
 	function snakeBodyGroth(snakeCor)
     {
@@ -140,32 +137,23 @@
 				break;
 	}
 
-var timestampOld = 0
-var timestampNew = 0
+
 	function changeFoward()
 	{		
 		//console.log(snakeCor);
 		keyPress = event.keyCode;
 		switch (keyPress) {
 			case 87: // keyboard: W
-				//alert("w");
-				//sleep(100);
-				//alert(parseInt(dateTimeNew - dateTime));
 			break;
 			case 68: // keyboard: D
-				//sleep(100);
 			break;
 			case 83: // keyboard: S
-				//sleep(100);
 			break;
 			case 65: // keyboard: A
-				//sleep(100);
 			break;
 			case 32: // keyboard: Space
 			break;
 		}
-	// 這邊有個小技巧，如果x座標已經設定移動距離moveY，y座標的移動距離moveX要設定爲0，
-	// 目的是要讓小精靈行進時，每次按鍵都維持在單一方向。
 
 		//極為重要的一步，因為畫布是每150毫秒更新一次，
 		//按鍵按太快，有可能導致moveX, moveY, 後面的蓋掉前面的，而導致蛇原地平行移動。
@@ -176,7 +164,8 @@ var timestampNew = 0
 		}
 		timestampOld = timestampNew;
 
-		
+		// 這邊有個小技巧，如果x座標已經設定移動距離moveY，y座標的移動距離moveX要設定爲0，
+	    // 目的是要讓小精靈行進時，每次按鍵都維持在單一方向。
 		if (keyPress == 87 && blockUpper == true) {
 			//console.log(87);
 			moveY=-movDis;
@@ -232,9 +221,6 @@ var timestampNew = 0
 			snakeBodyGroth(snakeCor);
 		}
 	}	
-
-
-
 
 	document.addEventListener('keyup', function (e) {
 		if (e.keyCode == 32 || e.keyCode == 13 )
