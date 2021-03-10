@@ -2,16 +2,31 @@
 	//定義畫布	
 	var canvas = document.getElementById('canvas');
 	var context = canvas.getContext('2d');
-	context.font="13px fantasy";
+ 	context.font="13px fantasy";
 	context.fillStyle="white";	
-
+	
 	//載入圖片
 	var ghost = new Image() ; var heart = new Image();
 	var guide = new Image(); var gg	= new Image();
+	var ghostHead = new Image();
+	var headUpLeft= new Image();
+	var headUpRight= new Image();
+	var headLeft=new Image();
+	var headRight= new Image();
+	var headDownLeft= new Image();
+	var headDownRight=new Image();
+
 	ghost.src = "images/ghost.png" ; heart.src = "images/heart.png";	  
 	guide.src = "images/awsd.png"; gg.src = "images/gg.png";
-			
-        //設定初值
+    ghostHead.src = "images/ghostHead.png";
+
+	headUpRight.src = "images/headUpLeft.png";
+	headUpLeft.src = "images/headUpLeft.png";
+	headLeft.src = "images/headLeft.png";
+	headRight.src = "images/headRight.png";
+	headDownLeft.src = "images/headDownLeft.png";
+	headDownRight.src = "images/headDownRight.png";
+    //設定初值
 	var score = 0; //給予分數初値，以及顯示字體的相關參數waw
 	var count = 0; // 給予執行主程式的初値	
 	var snakeCor = [{x:190,y:80}]; // 小精靈的座標
@@ -21,9 +36,14 @@
 	var moveX=0; //x座標移動的距離初値
 	var movDis=30; // x,y 座標移動的每次移動的距離
 	var limitX =15; var limitY =15; //此段是要控制小精靈距離愛心多遠才算吃掉
-	var blockUpper=true; var blockRight=true;
+ 	var blockUpper=true; var blockRight=true;
 	var blockDown=true;	var blockLeft=true;
 	var keyPress;
+ 	var startSeconds = new Date().getTime() / 1000;
+    var gameSeconds = 0;
+	var dateTime = Date.now();
+    var timestamp = Math.floor(dateTime / 1000);
+    var timestampNew = 0;
 
 	function draw()
 	{	
@@ -39,7 +59,19 @@
 				context.drawImage(guide, 0, 0, 70, 45, tipX, tipY, 70, 45); // 第二層 指標
 
 				for (var i = 0; i < snakeCor.length; i++) { // 第三層 小精靈(畫出整條蛇)
-					context.drawImage(ghost, 0, 0, 29, 26, snakeCor[i].x, snakeCor[i].y, 29, 26);
+
+					switch (i) {
+						case 0: 
+							context.drawImage(ghostHead, 0, 0, 29, 26, snakeCor[i].x, snakeCor[i].y, 29, 26);
+							break;
+						case 1:
+							context.drawImage(ghostHead, 0, 0, 29, 26, snakeCor[i].x, snakeCor[i].y, 29, 26);
+							break;
+						default: 
+							context.drawImage(ghost, 0, 0, 29, 26, snakeCor[i].x, snakeCor[i].y, 29, 26);
+							break;
+					}
+					
 					if (snakeCor.length == 1) {
 						iThink = 'awei_is_cool';
 					} else if (i == snakeCor.length - 1) {
@@ -49,16 +81,38 @@
 
 				context.drawImage(heart, 0, 0, 25, 25, heartCorX, heartCorY, 25, 25); // 第四層 愛心
 				// 指定小精靈在正常情況下的位移，以及隨時搭配"心動時刻"										
-				if (snakeCor[0].y > 0 || snakeCor[0].y < 176 && snakeCor[0].x > 0 || snakeCor[0].x < 378) {
+				if (snakeCor[0].y > 0 || snakeCor[0].y < 176 && snakeCor[0].x > 0 || snakeCor[0].x < 378) 
+				{
+					//console.log("Now: ", snakeCor);
 					snakeCor[0].y += moveY;
 					snakeCor[0].x += moveX;
-					// 判斷蛇身是否有重疊，，如果成立count+1，因為count=1，所以遊戲會停止執行。
+					snakeBodyGroth(snakeCor)
 					checkDie(snakeCor);
-					snakeCor.unshift({ x: snakeCor[0].x, y: snakeCor[0].y });
 					changeHeart();
 				}
 				checkWall(snakeCor);	
 				break;
+		}		
+	}
+ 
+
+	function snakeBodyGroth(snakeCor)
+    {
+		snakeCor.unshift({ x: snakeCor[0].x, y: snakeCor[0].y });
+	}
+
+	function checkDie(snakeCor)
+	{
+		//console.log(countduplicateBody);
+		// 判斷蛇身是否有重疊，，如果成立count+1，因為count=1，所以遊戲會停止執行。
+		for (var i = 4; i < snakeCor.length; i++) {
+			if (snakeCor[1].x == snakeCor[i].x && snakeCor[1].y == snakeCor[i].y  ) { 
+ 				//console.log(snakeCor);
+				count = 1;
+				if (count > 0) {
+					context.drawImage(gg, 0, 0, 150, 60, 75, 75, 150, 60);
+				}
+			}
 		}
 	}
 
@@ -79,56 +133,81 @@
 		}	
 	}
 
-	function checkDie(snakeCor)
-	{
-		for (var i = 1; i < snakeCor.length; i++) {
-			if (snakeCor[0].x == snakeCor[i].x && snakeCor[0].y == snakeCor[i].y) {
-				count = 1;
-				if (count > 0) {
-					context.drawImage(gg, 0, 0, 150, 60, 75, 75, 150, 60);
-				}
-			}
-		}
+	function sleep(milliseconds) {
+		var start = new Date().getTime();
+		while (1)
+			if ((new Date().getTime() - start) > milliseconds)
+				break;
 	}
 
+var timestampOld = 0
+var timestampNew = 0
 	function changeFoward()
-	{
+	{		
+		//console.log(snakeCor);
 		keyPress = event.keyCode;
 		switch (keyPress) {
 			case 87: // keyboard: W
+				//alert("w");
+				//sleep(100);
+				//alert(parseInt(dateTimeNew - dateTime));
 			break;
 			case 68: // keyboard: D
+				//sleep(100);
 			break;
 			case 83: // keyboard: S
+				//sleep(100);
 			break;
 			case 65: // keyboard: A
+				//sleep(100);
 			break;
 			case 32: // keyboard: Space
 			break;
 		}
 	// 這邊有個小技巧，如果x座標已經設定移動距離moveY，y座標的移動距離moveX要設定爲0，
 	// 目的是要讓小精靈行進時，每次按鍵都維持在單一方向。
-		if(keyPress==87 && blockUpper==true){
+
+		//極為重要的一步，因為畫布是每150毫秒更新一次，
+		//按鍵按太快，有可能導致moveX, moveY, 後面的蓋掉前面的，而導致蛇原地平行移動。
+		timestampNew = new Date().getTime();
+		//console.log(timestampOld, timestampNew);	 
+		if (timestampNew - timestampOld <= 150) {
+			return;
+		}
+		timestampOld = timestampNew;
+
+		
+		if (keyPress == 87 && blockUpper == true) {
+			//console.log(87);
 			moveY=-movDis;
 			moveX=0;
-			blockRight=true;	blockDown=false; blockLeft=true;					
+			blockUpper = false; blockRight = true; blockDown = false; blockLeft = true;	
+			//console.log(moveX, moveY);
+			
 		}
-		if(keyPress==68 && blockRight==true){
+		if (keyPress == 68 && blockRight == true) {
+			//console.log(68);
 			moveX=movDis;
 			moveY=0;
-			blockUpper=true; blockDown=true; blockLeft=false;					
+			blockRight = false; blockUpper = true; blockDown = true; blockLeft = false;		
+			//console.log(moveX, moveY );
 		}
-		if(keyPress==83 && blockDown==true){
+		if (keyPress == 83 && blockDown == true) {
+			//console.log(83);
 			moveY=movDis;
 			moveX=0;
-			blockUpper=false; blockRight=true; blockLeft=true;
+			blockDown = false; blockUpper = false; blockRight = true; blockLeft = true;
+			//console.log(moveX, moveY);
 		}
-		if(keyPress==65 && blockLeft==true){
+		if (keyPress == 65 && blockLeft == true) {
+			//console.log(65);
 			moveX=-movDis;
 			moveY=0;
-			blockUpper=true;	 blockRight=false; blockDown=true;					
+			blockLeft = false; blockUpper=true;	 blockRight=false; blockDown=true;	
+			//console.log(moveX, moveY);
 		}
-	}				
+	}
+			
 	// 主要是計算小精靈與愛心的距離（絶對値）當兩者非常接近時，就改變愛心的位置。
 	function changeHeart(){
 		if(Math.abs(snakeCor[0].x-heartCorX)<limitX && Math.abs(snakeCor[0].y-heartCorY)<limitY)
@@ -150,9 +229,12 @@
 			}
 			// 只要讓愛心位移（被吃）一次，分數就加一					
 			score+=1;
-			snakeCor.unshift({x:snakeCor[0].x,y:snakeCor[0].y});
+			snakeBodyGroth(snakeCor);
 		}
 	}	
+
+
+
 
 	document.addEventListener('keyup', function (e) {
 		if (e.keyCode == 32 || e.keyCode == 13 )
